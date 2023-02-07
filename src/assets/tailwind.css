@@ -3,3 +3,9 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+  .nav-action {
+    @apply cursor-pointer hover:text-gray-900 hover:font-black hover:font-mono;
+  }
+}
