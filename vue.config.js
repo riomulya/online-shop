@@ -4,7 +4,7 @@ module.exports = defineConfig({
   pluginOptions: {
     express: {
       shouldServeApp: true,
-      serverDir: './srv'
+      serverDir: './srv',
     },
   },
 });

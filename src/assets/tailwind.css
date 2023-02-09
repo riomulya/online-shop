@@ -6,6 +6,6 @@
 
 @layer components {
   .nav-action {
-    @apply cursor-pointer hover:text-gray-900 hover:font-black hover:font-mono;
+    @apply cursor-pointer hover:text-gray-900 hover:font-black hover:font-mono hover:animate-bounce;
   }
 }

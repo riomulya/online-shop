@@ -1,7 +1,10 @@
 <template>
-  <the-header></the-header>
-  <div class="w-full fixed top-20 flex bg-slate-200 h-full">coba 2</div>
-  <router-view></router-view>
+  <div class="container w-full">
+    <the-header></the-header>
+    <div class="w-full top-20 flex scroll-smooth">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script setup>

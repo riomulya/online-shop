@@ -5,9 +5,7 @@ import mutations from './mutations';
 export default {
   namespaced: true,
   state() {
-    return {
-      product: [],
-    };
+    return {};
   },
   mutations,
   actions,
