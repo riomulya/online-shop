@@ -1,19 +1,18 @@
 <template>
   <div class="grid grid-cols-4 w-full p-5 justify-evenly bg-slate-200">
-    <the-card
-      class="mt-10 mx-5"
+    <product-item
       v-for="prod in products"
       :key="prod.id"
-      :image="prod.image"
-      :title="prod.name"
+      :id="prod.id"
       :price="prod.price"
-      :desc="prod.desc"
-    ></the-card>
+      :title="prod.name"
+      :image="prod.image"
+    ></product-item>
   </div>
 </template>
 
 <script setup>
-import TheCard from '../layout/TheCard.vue';
+import ProductItem from '../components/product/ProductItem.vue';
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 

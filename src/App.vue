@@ -1,5 +1,5 @@
 <template>
-  <div class="container w-full">
+  <div class="w-full">
     <the-header></the-header>
     <div class="w-full top-20 flex scroll-smooth">
       <router-view v-slot="slotProps">
