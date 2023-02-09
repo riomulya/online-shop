@@ -3,31 +3,33 @@
     <div
       class="container flex items-center m-auto justify-between md:px-2 px-4"
     >
-      <div class="flex items-center">
-        <span class="material-symbols-outlined mr-2 text-5xl">
-          local_convenience_store
-        </span>
-        <span class="text-lg font-medium">Online Shop</span>
-      </div>
+      <router-link to="/product">
+        <div class="flex items-center">
+          <span class="material-symbols-outlined mr-2 text-5xl">
+            local_convenience_store
+          </span>
+          <span class="text-lg font-medium">Online Shop</span>
+        </div>
+      </router-link>
 
       <div class="md:flex hidden space-x-6 text-gray-600">
-        <a class="nav-action" href="#">
+        <router-link class="nav-action" to="/product">
           <span class="material-symbols-outlined"> inventory_2 </span>
-          Product</a
+          Product</router-link
         >
-        <a class="nav-action" href="#">
+        <router-link class="nav-action" to="/cart">
           <span class="material-symbols-outlined">
             shopping_cart_checkout
           </span>
-          Cart</a
+          Cart</router-link
         >
-        <a class="nav-action" href="#">
+        <router-link class="nav-action" to="/payment">
           <span class="material-symbols-outlined"> credit_card </span>
-          Payment</a
+          Payment</router-link
         >
-        <a class="nav-action" href="#">
+        <router-link class="nav-action" to="/addProduct">
           <span class="material-symbols-outlined"> payments </span>
-          Pricing</a
+          Add Product</router-link
         >
       </div>
 
