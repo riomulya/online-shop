@@ -15,15 +15,14 @@
 <script setup>
 import { defineProps, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import useCustomText from '@/script/customText';
 const props = defineProps(['image', 'title', 'price', 'id']);
 
 const route = useRoute();
-
+const customText = useCustomText();
 const productDetailLink = computed(() => {
-  return route.path + '/' + props.id;
+  return route.path + '/' + props.id + '/review';
 });
 
-const customTitle = computed(() => {
-  return props.title.charAt(0).toUpperCase() + props.title.slice(1);
-});
+const customTitle = customText.toCapitalize(props.title);
 </script>

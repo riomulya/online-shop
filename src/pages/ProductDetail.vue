@@ -1,44 +1,40 @@
 <template>
-  <div>
-    <img :src="image" :alt="title" />
-    <div>{{ title }}</div>
-    <div>{{ desc }}</div>
-    <div>{{ price }}</div>
-    <base-button v-if="reviewBtnVisible" link mode="base-btn" :to="reviewLink"
-      >Product Review</base-button
+  <div class="grid grid-cols-2">
+    <div
+      class="border-2 ring-slate-400 ring-2 shadow rounded-lg text-center max-h-screen"
     >
-    <router-view></router-view>
+      <img
+        :src="image"
+        :alt="title"
+        class="bg-clip-border rounded-t-lg h-96 w-full object-cover"
+      />
+      <div class="font-bold font-serif">{{ title }}</div>
+      <div>{{ desc }}</div>
+      <div>{{ price }}</div>
+    </div>
+    <router-view class="text-center w-full"></router-view>
   </div>
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue';
-import { useRoute } from 'vue-router';
+import { defineProps } from 'vue';
 import { useStore } from 'vuex';
+import useCustomText from '@/script/customText';
 
 const props = defineProps(['id']);
-const route = useRoute();
 const store = useStore();
 
+localStorage.setItem('reviewBtnVisible', true);
 let selectedProduct = null;
-let reviewBtnVisible = true;
 
 selectedProduct = store.getters['product/products'].find(
   (prod) => prod.id === props.id
 );
 
-console.log(props.id, selectedProduct);
 const image = selectedProduct.image;
-const title = selectedProduct.name;
+let title = selectedProduct.name;
 const price = selectedProduct.price;
 const desc = selectedProduct.desc;
 
-const reviewLink = computed(() => {
-  reviewBtnVisible = false;
-  if (route.path.includes('review')) {
-    reviewBtnVisible = false;
-    return route.path;
-  }
-  return route.path + '/review';
-});
+title = useCustomText().toCapitalize(title);
 </script>
