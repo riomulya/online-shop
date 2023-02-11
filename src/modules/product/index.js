@@ -5,7 +5,52 @@ import mutations from './mutations';
 export default {
   namespaced: true,
   state() {
-    return {};
+    return {
+      products: [
+        {
+          id: 'p1',
+          image: 'https://source.unsplash.com/random/?cosmetic',
+          name: 'Cosmetic',
+          price: 4.22,
+          desc: 'lorem Ipsum dolor sit amet',
+        },
+        {
+          id: 'p2',
+          image: 'https://source.unsplash.com/random/?bycyle',
+          name: 'bycyle',
+          price: 100.99,
+          desc: 'lorem Ipsum dolor sit amet',
+        },
+        {
+          id: 'p3',
+          image: 'https://source.unsplash.com/random/?chair',
+          name: 'chair',
+          price: 40.99,
+          desc: 'lorem Ipsum dolor sit amet',
+        },
+        {
+          id: 'p4',
+          image: 'https://source.unsplash.com/random/?table',
+          name: 'table',
+          price: 40.99,
+          desc: 'lorem Ipsum dolor sit amet',
+        },
+        {
+          id: 'p5',
+          image: 'https://source.unsplash.com/random/?car',
+          name: 'car',
+          price: 40000.99,
+          desc: 'lorem Ipsum dolor sit amet',
+        },
+        {
+          id: 'p6',
+          image: 'https://source.unsplash.com/random/?laptop',
+          name: 'laptop',
+          price: 4000.99,
+          desc: 'lorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit amet',
+        },
+      ],
+    };
   },
   mutations,
   actions,

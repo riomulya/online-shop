@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 w-full p-5 justify-evenly bg-slate-200">
+  <div class="grid grid-cols-4 w-full p-5 justify-evenly">
     <product-item
       v-for="prod in products"
       :key="prod.id"
@@ -21,4 +21,6 @@ const store = useStore();
 const products = computed(() => {
   return store.getters['product/products'];
 });
+
+console.log(products.value);
 </script>

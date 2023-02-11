@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full">
+  <div class="w-full bg-[#A5AEB5] bg-opacity-25 h-screen">
     <the-header></the-header>
-    <div class="w-full top-20 flex scroll-smooth">
+    <div class="w-full top-20 flex scroll-smooth max-h-screen">
       <router-view v-slot="slotProps">
         <transition name="route" mode="out-in">
           <component :is="slotProps.Component"></component>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import TheHeader from './components/UI/TheHeader.vue';
+import TheHeader from './components/layout/TheHeader.vue';
 // import { useStore } from 'vuex';
 // import { computed } from 'vue';
 </script>

@@ -1,5 +1,5 @@
 export default {
-  products(_, _2, rootState) {
-    return rootState.products;
+  products(state) {
+    return state.products;
   },
 };
