@@ -50,6 +50,7 @@ export default {
           desc: 'lorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit amet',
         },
       ],
+      reviews: [],
     };
   },
   mutations,
