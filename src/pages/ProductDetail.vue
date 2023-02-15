@@ -1,16 +1,5 @@
 <template>
   <div>
-    <base-dialog :show="showDialog" @close="closeDialog" :title="title">
-      <ProductItem
-        :image="image"
-        :title="title"
-        :id="props.id"
-        :price="price"
-      ></ProductItem>
-      <base-button class="bg-sky-300 p-3 rounded-xl" @click="closeDialog"
-        >Add</base-button
-      >
-    </base-dialog>
     <div class="grid grid-cols-2 mt-10 w-full">
       <div
         class="border-2 ring-slate-400 ring-2 shadow rounded-lg text-center mx-11 w-full"
@@ -22,33 +11,45 @@
         />
         <div class="font-bold font-serif">{{ title }}</div>
         <div>{{ desc }}</div>
-        <div>{{ price }}</div>
-        <base-button
-          mode="flex w-full grid-cols-none place-items-start items-end"
+        <div class="font-bold">
+          $
+          <p class="hover:cursor-pointer text-sky-600 inline">
+            {{ priceProd }}
+          </p>
+        </div>
+        <!-- <base-button
+          mode="flex w-full grid-cols-none place-items-start items-start"
           @click="addCart"
-        >
+        > -->
+        <div class="flex w-full grid-cols-none place-items-start items-start">
           <div>
-            <span class="material-symbols-outlined mx-2"> add_circle </span>
-            <p class="inline w-full">Add to Cart</p>
+            <input
+              type="number"
+              name="productSum"
+              id="productSum"
+              class="rounded-xl w-1/6 border-2 ring-2 ring-sky-200 ml-0 mr-3"
+              min="1"
+              v-model="countProduct"
+            />
+            <p class="inline w-full cursor-pointer">Add to Cart</p>
           </div>
-        </base-button>
+        </div>
+        <!-- </base-button> -->
       </div>
-      <router-view class="ml-20"></router-view>
+      <router-view class="mx-16"></router-view>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import useCustomText from '@/script/customText';
-import ProductItem from '@/components/product/ProductItem.vue';
 
 const props = defineProps(['id']);
 const store = useStore();
-let showDialog = ref(false);
 
-localStorage.setItem('reviewBtnVisible', true);
+const countProduct = ref(1);
 let selectedProduct = null;
 
 selectedProduct = store.getters['product/products'].find(
@@ -58,14 +59,15 @@ selectedProduct = store.getters['product/products'].find(
 const image = selectedProduct.image;
 let title = selectedProduct.name;
 const price = selectedProduct.price;
+const priceProd = ref(price);
 const desc = selectedProduct.desc;
 
-title = useCustomText().toCapitalize(title);
-function addCart() {
-  showDialog.value = true;
-}
+watch(countProduct, (newVal) => {
+  priceProd.value = +(price * newVal).toFixed(2);
+});
 
-function closeDialog() {
-  showDialog.value = false;
-}
+title = useCustomText().toCapitalize(title);
+// function addCart() {
+//   showDialog.value = true;
+// }
 </script>

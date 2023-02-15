@@ -21,6 +21,4 @@ const store = useStore();
 const products = computed(() => {
   return store.getters['product/products'];
 });
-
-console.log(products.value);
 </script>

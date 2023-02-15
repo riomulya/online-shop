@@ -13,21 +13,51 @@
       </router-link>
 
       <div class="md:flex hidden space-x-6 text-gray-600">
-        <router-link class="nav-action" to="/product">
+        <router-link
+          class="nav-action"
+          :class="
+            path.includes('product')
+              ? 'animate-bounce font-mono font-black'
+              : ''
+          "
+          to="/product"
+        >
           <span class="material-symbols-outlined"> inventory_2 </span>
           Product</router-link
         >
-        <router-link class="nav-action" to="/cart">
+        <router-link
+          class="nav-action"
+          to="/cart"
+          :class="
+            path.includes('cart') ? 'animate-bounce font-mono font-black' : ''
+          "
+        >
           <span class="material-symbols-outlined">
             shopping_cart_checkout
           </span>
           Cart</router-link
         >
-        <router-link class="nav-action" to="/payment">
+        <router-link
+          class="nav-action"
+          to="/payment"
+          :class="
+            path.includes('payment')
+              ? 'animate-bounce font-mono font-black'
+              : ''
+          "
+        >
           <span class="material-symbols-outlined"> credit_card </span>
           Payment</router-link
         >
-        <router-link class="nav-action" to="/addProduct">
+        <router-link
+          class="nav-action"
+          to="/addProduct"
+          :class="
+            path.includes('addProduct')
+              ? 'animate-bounce font-mono font-black'
+              : ''
+          "
+        >
           <span class="material-symbols-outlined"> payments </span>
           Add Product</router-link
         >
@@ -67,3 +97,16 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { watch, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+const route = useRoute();
+const router = useRouter();
+
+const path = ref(router.currentRoute.value.path);
+
+watch(route, (newVal) => {
+  path.value = newVal.path;
+});
+</script>

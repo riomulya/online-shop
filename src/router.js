@@ -5,7 +5,7 @@ import CartList from '../src/pages/CartList.vue';
 import ThePayment from '../src/pages/ThePayment.vue';
 import AddProduct from '../src/pages/AddProduct.vue';
 import ProductDetail from '../src/pages/ProductDetail.vue';
-import ProductReview from '../src/pages/ProductReview.vue';
+import ReviewList from '../src/pages/ReviewList.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,7 +21,7 @@ const router = createRouter({
       children: [
         {
           path: 'review',
-          component: ProductReview,
+          component: ReviewList,
         },
       ],
     },
