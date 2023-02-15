@@ -50,7 +50,22 @@ export default {
           desc: 'lorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit ametlorem Ipsum dolor sit amet',
         },
       ],
-      reviews: [],
+      reviews: [
+        {
+          id: 'r1',
+          idProduct: 'p6',
+          name: 'Owi Slebew',
+          rating: '5',
+          opinion: 'great product great delivery and amazing quality product',
+        },
+        {
+          id: 'r2',
+          idProduct: 'p6',
+          name: 'Roro Slebew',
+          rating: '5',
+          opinion: 'great product great delivery and amazing quality product',
+        },
+      ],
     };
   },
   mutations,
