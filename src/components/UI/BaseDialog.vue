@@ -56,9 +56,6 @@ export default {
       this.$emit('close');
     },
   },
-  created() {
-    console.log(this.secondaryConfirm);
-  },
 };
 </script>
 

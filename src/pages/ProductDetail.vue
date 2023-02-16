@@ -9,6 +9,7 @@
         <span>
           <base-button
             class="rounded-xl hover:ring-2 hover:ring-gray-600 hover:bg-transparent hover:text-black bg-slate-500 text-white p-2"
+            @click="confirmOrder"
             >Confirm</base-button
           >
         </span>
@@ -37,10 +38,6 @@
           {{ priceProd }}
         </p>
       </div>
-      <!-- <base-button
-          mode="flex w-full grid-cols-none place-items-start items-start"
-          @click="addCart"
-        > -->
       <div
         class="flex w-full grid-cols-none place-items-start items-start my-2 mx-0"
       >
@@ -52,6 +49,7 @@
             class="rounded-xl w-1/6 border-2 ring-2 ring-sky-200 ml-0 mr-3"
             min="1"
             v-model="countProduct"
+            @keyup.enter="addCart"
           />
           <p
             class="inline w-full cursor-pointer hover:bg-white hover:rounded-lg hover:border-2 hover:border-sky-200 p-1 m-2 hover:font-mono hover:font-bold"
@@ -94,7 +92,6 @@ watch(countProduct, (newVal) => {
 
 title = useCustomText().toCapitalize(title);
 function addCart() {
-  countProduct.value = 1;
   showDialog.value = true;
 }
 
@@ -105,4 +102,16 @@ function closeDialog() {
 function cancelOrder() {
   closeDialog();
 }
+
+function confirmOrder() {
+  closeDialog();
+  store.dispatch('cart/addProduct', {
+    productId: selectedProduct.id,
+    quantity: countProduct.value,
+    amount: priceProd.value,
+  });
+  console.log(store.getters['cart/cart']);
+}
+console.log(selectedProduct.id);
+console.log(store.getters['cart/cart']);
 </script>
