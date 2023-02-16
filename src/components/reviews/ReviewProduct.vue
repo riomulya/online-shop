@@ -1,5 +1,7 @@
 <template>
-  <div class="border-[3px] border-sky-200 rounded-lg m-3 p-3">
+  <div
+    class="border-[3px] border-sky-100 rounded-lg m-3 p-3 bg-stone-50 shadow-md"
+  >
     <p>Name : {{ name }}</p>
     <span>Rating : </span>
     <p class="inline text-slate-900 font-bold">{{ rating }}</p>

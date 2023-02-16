@@ -3,20 +3,21 @@
     <div v-if="show" @click="tryClose" class="backdrop"></div>
     <transition name="dialog">
       <dialog open v-if="show">
-        <header class="bg-slate-400">
+        <header class="bg-slate-400 flex justify-between">
           <slot name="header">
-            <h2 class="font-bold text-2xl">{{ title }}</h2>
+            <span class="font-bold text-2xl">{{ title }}</span>
+            <span class="cursor-pointer" @click="tryClose">❌</span>
           </slot>
         </header>
         <section>
           <slot></slot>
         </section>
-        <menu v-if="!fixed">
+        <menu v-if="secondaryConfirm">
           <slot name="actions">
             <base-button
               @click="tryClose"
               class="rounded-xl hover:ring-2 hover:ring-gray-600 hover:bg-transparent hover:text-black bg-slate-500 text-white p-2"
-              >{{ closeConfirm }}</base-button
+              >{{ secondaryConfirm }}</base-button
             >
           </slot>
         </menu>
@@ -41,9 +42,9 @@ export default {
       required: false,
       default: false,
     },
-    closeConfirm: {
+    secondaryConfirm: {
       type: String,
-      default: 'Close',
+      required: false,
     },
   },
   emits: ['close'],
@@ -54,6 +55,9 @@ export default {
       }
       this.$emit('close');
     },
+  },
+  created() {
+    console.log(this.secondaryConfirm);
   },
 };
 </script>

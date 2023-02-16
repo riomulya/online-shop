@@ -22,6 +22,8 @@ import ReviewProduct from '@/components/reviews/ReviewProduct.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
+import useCustomText from '@/script/customText';
+
 const route = useRoute();
 const store = useStore();
 const idProd = route.params.id;
@@ -37,9 +39,6 @@ const selectedReviews = reviews.value.filter(
 const selectedProduct = store.getters['product/products'].find(
   (prod) => prod.id === idProd
 );
-const titleProd = selectedProduct.name;
+const titleProd = useCustomText().toCapitalize(selectedProduct.name);
 const hasReviewed = selectedReviews.length;
-console.log(route.params.id);
-console.log(hasReviewed);
-console.log(titleProd.name);
 </script>

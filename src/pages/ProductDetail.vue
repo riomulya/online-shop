@@ -2,9 +2,25 @@
   <div class="grid grid-cols-2 mt-10 w-full justify-self-center">
     <base-dialog
       :show="showDialog"
-      @close="cancelOrder"
+      @close="closeDialog"
       title="Confirm Your Order to Checkout?"
-    ></base-dialog>
+    >
+      <div class="flex justify-between">
+        <span>
+          <base-button
+            class="rounded-xl hover:ring-2 hover:ring-gray-600 hover:bg-transparent hover:text-black bg-slate-500 text-white p-2"
+            >Confirm</base-button
+          >
+        </span>
+        <span>
+          <base-button
+            @click="cancelOrder"
+            class="inline rounded-xl hover:ring-2 hover:ring-red-600 hover:bg-transparent hover:text-black bg-red-500 text-white p-2"
+            >Not Sure</base-button
+          >
+        </span>
+      </div>
+    </base-dialog>
     <div
       class="border-2 ring-slate-400 ring-2 shadow rounded-lg text-center mx-11 w-full"
     >
@@ -25,7 +41,9 @@
           mode="flex w-full grid-cols-none place-items-start items-start"
           @click="addCart"
         > -->
-      <div class="flex w-full grid-cols-none place-items-start items-start">
+      <div
+        class="flex w-full grid-cols-none place-items-start items-start my-2 mx-0"
+      >
         <div>
           <input
             type="number"
@@ -36,7 +54,7 @@
             v-model="countProduct"
           />
           <p
-            class="inline w-full cursor-pointer hover:bg-white hover:rounded-lg hover:border-2 hover:border-sky-200 p-[2px] m-2 hover:font-mono hover:font-bold"
+            class="inline w-full cursor-pointer hover:bg-white hover:rounded-lg hover:border-2 hover:border-sky-200 p-1 m-2 hover:font-mono hover:font-bold"
             @click="addCart"
           >
             Add to Cart
