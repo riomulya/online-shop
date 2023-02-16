@@ -3,9 +3,9 @@
     <div v-if="show" @click="tryClose" class="backdrop"></div>
     <transition name="dialog">
       <dialog open v-if="show">
-        <header>
+        <header class="bg-slate-400">
           <slot name="header">
-            <h2>{{ title }}</h2>
+            <h2 class="font-bold text-2xl">{{ title }}</h2>
           </slot>
         </header>
         <section>
@@ -13,7 +13,11 @@
         </section>
         <menu v-if="!fixed">
           <slot name="actions">
-            <base-button @click="tryClose">{{ closeConfirm }}</base-button>
+            <base-button
+              @click="tryClose"
+              class="rounded-xl hover:ring-2 hover:ring-gray-600 hover:bg-transparent hover:text-black bg-slate-500 text-white p-2"
+              >{{ closeConfirm }}</base-button
+            >
           </slot>
         </menu>
       </dialog>
@@ -81,7 +85,6 @@ dialog {
 }
 
 header {
-  background-color: #3a0061;
   color: white;
   width: 100%;
   padding: 1rem;
