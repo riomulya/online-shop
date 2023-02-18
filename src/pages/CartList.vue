@@ -41,10 +41,12 @@ const cart = computed(() => {
 
 const amount = ref(0);
 const cartArray = ref([]);
+
 cart.value.forEach((el) => {
-  if (!cartArray.value.includes(el.productId)) {
-    cartArray.value.push(el.productId);
-  }
+  const id = el.productId;
+  const quantity = el.quantity;
+  const addItem = { id: id, quantity: quantity, amount: el.amount };
+  cartArray.value.push(addItem);
   amount.value += el.amount;
 });
 
@@ -52,5 +54,5 @@ function goToProduct() {
   router.push('/product');
 }
 
-console.log(router, amount.value, cartArray.value);
+console.log(router, amount.value, 'cart Array : ', cartArray.value);
 </script>
