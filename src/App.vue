@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-[#A5AEB5] bg-opacity-25 h-screen">
+  <div class="bg-slate-200 h-screen">
     <the-header></the-header>
-    <div class="max-w-screen-2xl top-20 flex scroll-smooth max-h-screen">
+    <div class="w-auto top-20 flex scroll-smooth h-auto">
       <router-view v-slot="slotProps">
         <transition name="route" mode="out-in">
           <component :is="slotProps.Component"></component>

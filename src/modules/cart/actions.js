@@ -11,9 +11,13 @@ export default {
         skip = true;
       }
     }
+
     if (!skip) {
       const addItem = {
         productId: payload.productId,
+        name: payload.name,
+        image: payload.image,
+        price: payload.price,
         quantity: payload.quantity,
         amount: payload.amount,
       };

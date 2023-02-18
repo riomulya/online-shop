@@ -107,6 +107,9 @@ function confirmOrder() {
   closeDialog();
   store.dispatch('cart/addProduct', {
     productId: selectedProduct.id,
+    price: selectedProduct.price,
+    image: selectedProduct.image,
+    name: selectedProduct.name,
     quantity: countProduct.value,
     amount: priceProd.value,
   });

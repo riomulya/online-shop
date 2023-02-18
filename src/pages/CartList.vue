@@ -1,16 +1,5 @@
 <template>
-  <div class="w-full">
-    <div class="grid w-full" v-if="amount">
-      <div class="font-bold text-xl place-self-center p-3 m-1">
-        Total Amount : $
-        <span class="text-sky-600">{{ amount.toFixed(2) }} </span>
-      </div>
-      <ul class="place-self-center p-2 m-2">
-        <li>
-          <!-- <product-item></product-item> -->
-        </li>
-      </ul>
-    </div>
+  <div class="w-full h-full bg-slate-200">
     <base-dialog
       :show="!amount"
       title="Empty Cart Maybe Add Some"
@@ -24,6 +13,30 @@
         </p>
       </div>
     </base-dialog>
+    <div class="grid w-full" v-if="amount">
+      <div class="font-bold text-xl place-self-center p-3 m-1">
+        Total Amount : $
+        <span class="text-sky-600">{{ amount.toFixed(2) }} </span>
+      </div>
+      <ul class="place-self-center p-2 m-2">
+        <li>
+          <product-item
+            v-for="cartItem in cart"
+            :key="cartItem.id"
+            :image="cartItem.image"
+            :price="cartItem.amount.toFixed(2)"
+            :title="cartItem.name"
+            :id="cartItem.productId"
+            :isLink="false"
+          >
+            <span
+              >Quantity :
+              <input type="number" name="" id="" :value="cartItem.quantity" />
+            </span>
+          </product-item>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -31,7 +44,7 @@
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
-// import ProductItem from '@/components/product/ProductItem.vue';
+import ProductItem from '@/components/product/ProductItem.vue';
 const store = useStore();
 
 const router = useRouter();
@@ -40,13 +53,8 @@ const cart = computed(() => {
 });
 
 const amount = ref(0);
-const cartArray = ref([]);
 
 cart.value.forEach((el) => {
-  const id = el.productId;
-  const quantity = el.quantity;
-  const addItem = { id: id, quantity: quantity, amount: el.amount };
-  cartArray.value.push(addItem);
   amount.value += el.amount;
 });
 
@@ -54,5 +62,5 @@ function goToProduct() {
   router.push('/product');
 }
 
-console.log(router, amount.value, 'cart Array : ', cartArray.value);
+console.log(router, amount.value);
 </script>

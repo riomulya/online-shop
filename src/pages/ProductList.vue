@@ -7,6 +7,7 @@
       :price="prod.price"
       :title="prod.name"
       :image="prod.image"
+      :isLink="true"
     ></product-item>
   </div>
 </template>
