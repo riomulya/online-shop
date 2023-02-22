@@ -28,10 +28,17 @@
             :title="cartItem.name"
             :id="cartItem.productId"
             :isLink="false"
+            class="hover:animate-none hover:cursor-default shadow-xl"
           >
             <span
               >Quantity :
-              <input type="number" name="" id="" :value="cartItem.quantity" />
+              <input
+                type="number"
+                name=""
+                id=""
+                :value="cartItem.quantity"
+                class="bg-inherit w-10"
+              />
             </span>
           </product-item>
         </li>
